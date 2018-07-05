@@ -42,7 +42,7 @@ In the case of using a [Regular Expression][url-docs-regexp] for the `end` prop,
 
 ### Why and when to middle truncate?
 
-We have access to CSS text truncation with the `text-overflow: ellipsis;` which will truncate the text at the end of a string for us. So why do you need middle truncation, and when should you usw it?
+We have access to CSS text truncation with the `text-overflow: ellipsis;` which will truncate the text at the end of a string for us. So why do you need middle truncation, and when should you use it?
 
 Ultimately it boils down to whether text at the end or in the middle of the string is more likely to differentiate the item.
 
