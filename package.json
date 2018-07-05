@@ -31,26 +31,16 @@
   },
   "dependency-check": {
     "ignore": [
-      "action-creators",
-      "config",
-      "constants",
+      "components",
       "containers",
-      "middleware",
-      "reducers",
-      "sagas",
-      "schemas",
-      "selectors",
-      "stores",
-      "utils",
-      "middleware"
+      "lib"
     ]
   },
   "keywords": [
-    "bolierplate",
     "react",
-    "express",
-    "node",
-    "webpack"
+    "truncate",
+    "truncation",
+    "text"
   ],
   "devDependencies": {
     "@pisano/enzyme": "^3.3.0-pisano.public.1",
