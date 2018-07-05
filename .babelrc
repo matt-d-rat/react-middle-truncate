@@ -1,0 +1,33 @@
+{
+  "presets": [
+    "react",
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7"]
+      },
+      "modules": false
+    }]
+  ],
+  "plugins": [
+    "syntax-object-rest-spread",
+    "transform-object-rest-spread",
+    "transform-class-properties"
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        "react",
+        ["env", {
+          "targets": {
+            "browsers": ["last 2 versions", "safari >= 7"]
+          }
+        }]
+      ],
+      "plugins": [
+        "syntax-object-rest-spread",
+        "transform-object-rest-spread",
+        "transform-class-properties"
+      ]
+    }
+  }
+}

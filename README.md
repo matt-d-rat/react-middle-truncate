@@ -1,0 +1,66 @@
+# react-middle-truncate
+
+A React component for intelligently truncating text in the middle of the string with an ellipsis. You can see the component in action in this [demo][url-demo].
+
+## Installation
+
+```bash
+npm install react-middle-truncate --save
+```
+
+## Usage
+
+The truncation point is determined by taking into account the inheritted `font` CSS properties of the element, and rendering the result to [Canvas][url-docs-canvas] in order to dynamically calculaute the width of the text. Should the width of the text not fit into the available space to render, truncation is applied. The result of which looks like this:
+
+```javascript
+import MiddleTruncate from 'react-middle-truncate';
+
+<MiddleTruncate
+  text="Hello world this is a really long string"
+  start={/Hello\sworld/}
+  end={6} />
+```
+
+![Result of Middle Truncation using the code sample above][img-screenshot]
+
+You'll note from the code sample above we can use the `start` and `end` props to determine how much of the start and end of the string to preserve. These props can either be numeric, which indicates how many characters of the string from that direction to preserve, or you can provide a [Regular Expression][url-docs-regexp] to dynamically match parts of the string.
+
+In the case of using a [Regular Expression][url-docs-regexp] for the `end` prop, remember to match from the end of the pattern using the `$` flag.
+
+### Options
+
+| Prop                 | Type               | Description                                                                                                                                                                            | Default |
+|----------------------|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| `text`               | `String`           | The input text to truncate if there isn't enough space to render the entire string.                                                                                                    | `''`    |
+| `ellipsis`           | `String`           | The ellipsis to use when the text is truncated.                                                                                                                                        | `'...'` |
+| `start`              | `Number` `RegExp`  | The number of characters or a Regular Expression match from the start of the text to preserve.                                                                                         | `0`     |
+| `end`                | `Number` `RegExp`  | The number of characters or a Regular Expression match from the end of the text to preserve.                                                                                           | `0`     |
+| `smartCopy`          | `Boolean` `String` | Can be one of the following: `false`, `'partial'` or `'all'`. Allows the the full un-truncated text to be copied to the user's clipboard when they select and copy the truncated text. | `'all'` |
+| `onResizeDebounceMs` | `Number`           | A delay in milliseconds to debounce the window resize event listener.                                                                                                                  | `100`   |
+
+### Why and when to middle truncate?
+
+We have access to CSS text truncation with the `text-overflow: ellipsis;` which will truncate the text at the end of a string for us. So why do you need middle truncation, and when should you usw it?
+
+Ultimately it boils down to whether text at the end or in the middle of the string is more likely to differentiate the item.
+
+In the case of a street address, the end of the string is likely to be less important in helping the user to differentiate items from one another, as most strings of that category are likely to end in road, street, avenue etc... So in that case truncating at the end of the string would be a better solution.
+
+In the case of a connection string or a URL, the start and/or end of the string is likely to contain more valueable information to help the user differentiate items from one another, such as the protocol and subdomain parts at the start, and the port number at the end of the string are more likely to be different. In that case truncatig in the middle of the string would be a better solution.
+
+## Maintainers
+
+* Matt Fairbrass [@matt\_d_rat][url-twitter]
+
+Pull requests of any kind are welcome from the community. Please read the guidelines for Contributing before raising a pull request.
+
+## License
+
+MIT License
+
+[url-demo]: https://matt-d-rat.github.io/react-middle-truncate
+[url-docs-canvas]: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+[url-docs-regexp]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+[url-twitter]: https://twitter.com/matt_d_rat
+
+[img-screenshot]: src/demo/assets/images/screenshot.png "Result of applying middle truncation to the text"

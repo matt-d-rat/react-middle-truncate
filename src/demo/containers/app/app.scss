@@ -1,0 +1,85 @@
+@import "./_config.scss";
+
+.root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.header,
+.section {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+}
+
+.header {
+  background: rgba(#000, 0.4);
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 2rem;
+}
+
+.header-input {
+  flex: 1;
+}
+
+.section {
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.demo,
+.controls {
+  display: block;
+  text-align: center;
+}
+
+.demo {
+  color: $color-secondary;
+  font-size: 4rem;
+  font-weight: bold;
+  max-width: 100vw;
+  margin-top: 14px;
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    box-sizing: border-box;
+    height: 20px;
+    position: absolute;
+    top: -24px;
+    left: 0;
+    right: 0;
+    border-top: $border-size solid $color-primary;
+    border-left: $border-size solid $color-primary;
+    border-right: $border-size solid $color-primary;
+  }
+}
+
+.controls {
+  padding: 2rem;
+
+  &:last-child {
+    margin-top: 6rem;
+  }
+}
+
+.widthText {
+  font-size: 2rem;
+  color: $color-primary;
+  padding: 1rem;
+  background: #393D43;
+  position: relative;
+  top: 33px;
+  z-index: 2;
+}
+
+.instructions {
+  color: $color-secondary;
+  font-size: 1.6rem;
+  padding: 4rem 4rem 0 4rem;
+  text-align: justify;
+}

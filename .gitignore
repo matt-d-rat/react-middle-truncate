@@ -1,0 +1,12 @@
+.DS_Store
+npm-debug.log
+node_modules/
+build
+lib-cov
+coverage
+.nyc_output
+.tmp
+.lock-wscript
+.idea/
+*.iml
+.nvmrc

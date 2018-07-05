@@ -1,0 +1,69 @@
+@import "./_config.scss";
+
+.component {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-bottom: 1em;
+  text-align: left;
+
+  + .component {
+    margin-left: 2rem;
+  }
+}
+
+.input,
+.label {
+  transition: all 0.2s;
+  touch-action: manipulation;
+  color: $input-color-secondary;
+}
+
+.input {
+  background-color: transparent;
+  font-size: 2rem;
+  padding-bottom: $input-gutter;
+  color: $input-color-secondary;
+  border: none;
+  border-bottom: $input-gutter solid $input-color-secondary;
+
+  // Translate down and scale the label up to cover the placeholder,
+  // when following an input (with placeholder-shown support).
+  // Also make sure the label is only on one row, at max 2/3rds of the
+  // field—to make sure it scales properly and doesn't wrap.
+  &:placeholder-shown + .label {
+    cursor: text;
+    max-width: 66.66%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transform-origin: left bottom;
+    transform: translate(0, 2.125rem) scale(1.5);
+  }
+
+  &::placeholder {
+    opacity: 0;
+    transition: inherit;
+    font-size: 1.4rem;
+  }
+
+  &:focus {
+    outline: none;
+    border-bottom-color: $input-color-primary;
+    transition: all ease-in 100ms;
+
+    &::placeholder {
+      color: rgba($input-color-secondary, 0.7);
+      opacity: 1;
+    }
+  }
+
+  // When the element is focused, remove the label transform.
+  // Also, do this when the placeholder is _not_ shown, i.e. when
+  // there's something in the input at all.
+  &:not(:placeholder-shown) + .label,
+  &:focus + .label {
+    transform: translate(0, 0) scale(1);
+    cursor: pointer;
+    color: $input-color-primary;
+  }
+}

@@ -1,0 +1,57 @@
+:global {
+  @import "~normalize.css";
+
+  // Set the base font size to 62.5% so that rem units for font-size scale like so:
+  // 1rem = 10px, 1.1rem = 11px, 1.2rem = 12px, ... 2rem = 20px etc..
+  html {
+    font-size: 62.5%;
+  }
+
+  html,
+  body,
+  #root {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  body {
+    background-color: #393D43;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    font-size: 1.6rem;
+    -webkit-touch-callout: none;
+    -webkit-font-smoothing: antialiased;
+
+    * {
+      -webkit-tap-highlight-color: rgba(#fff, 0);
+    }
+  }
+
+  // Reset the input range styles
+  input[type=range] {
+    -webkit-appearance: none; // Hides the slider so that custom slider can be made
+    width: 100%; // Specific width is required for Firefox.
+    background: transparent; // Otherwise white in Chrome
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+
+  input[type=range]:focus {
+    outline: none; // Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though.
+  }
+
+  input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+
+    // Hides the slider so custom styles can be added
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+}
