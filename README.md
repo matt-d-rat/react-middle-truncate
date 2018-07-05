@@ -48,11 +48,13 @@ In the case of a street address, the end of the string is likely to be less impo
 
 In the case of a connection string or a URL, the start and/or end of the string is likely to contain more valueable information to help the user differentiate items from one another, such as the protocol and subdomain parts at the start, and the port number at the end of the string are more likely to be different. In that case truncatig in the middle of the string would be a better solution.
 
-## Maintainers
+## Contributing
+
+Pull requests of any kind are welcome from the community. Please ensure you have read the guidelines for [Contributing][url-contributing] and this project's [Code of Conduct][url-code-of-conduct] before raising a pull request.
+
+### Maintainers
 
 * Matt Fairbrass [@matt\_d_rat][url-twitter]
-
-Pull requests of any kind are welcome from the community. Please read the guidelines for Contributing before raising a pull request.
 
 ## License
 
@@ -62,5 +64,7 @@ MIT License
 [url-docs-canvas]: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
 [url-docs-regexp]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 [url-twitter]: https://twitter.com/matt_d_rat
+[url-contributing]: CONTRIBUTING.md
+[url-code-of-conduct]: CODE_OF_CONDUCT.md
 
 [img-screenshot]: src/demo/assets/images/screenshot.png "Result of applying middle truncation to the text"
