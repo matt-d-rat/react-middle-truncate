@@ -1,5 +1,7 @@
 # react-middle-truncate
 
+[![][travis_img]][travis_url] [![][github_issues_img]][github_issues_url] [![github_forks_img]][github_forks_url] [![github_stars_img]][github_stars_url] [![][license_img]][license_url] 
+
 A React component for intelligently truncating text in the middle of the string with an ellipsis. You can see the component in action in this [demo][url-demo].
 
 ## Installation
@@ -68,3 +70,14 @@ MIT License
 [url-code-of-conduct]: CODE_OF_CONDUCT.md
 
 [img-screenshot]: src/demo/assets/images/screenshot.png "Result of applying middle truncation to the text"
+
+[license_img]: https://img.shields.io/github/license/matt-d-rat/react-middle-truncate.svg
+[license_url]: https://github.com/matt-d-rat/react-middle-truncate/blob/master/LICENSE
+[github_issues_img]: https://img.shields.io/github/issues/matt-d-rat/react-middle-truncate.svg
+[github_issues_url]: https://github.com/matt-d-rat/react-middle-truncate/issues
+[github_forks_img]: https://img.shields.io/github/forks/matt-d-rat/react-middle-truncate.svg
+[github_forks_url]: https://github.com/matt-d-rat/react-middle-truncate/network
+[github_stars_img]: https://img.shields.io/github/stars/matt-d-rat/react-middle-truncate.svg
+[github_stars_url]: https://github.com/matt-d-rat/react-middle-truncate/stargazers
+[travis_img]: https://img.shields.io/travis/matt-d-rat/react-middle-truncate.svg?style=flat-square
+[travis_url]: https://travis-ci.org/matt-d-rat/react-middle-truncate
