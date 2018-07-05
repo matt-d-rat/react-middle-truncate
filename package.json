@@ -6,6 +6,14 @@
   "license": "MIT",
   "main": "lib/react-middle-truncate.js",
   "module": "src/react-middle-truncate/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matt-d-rat/react-middle-truncate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/matt-d-rat/react-middle-truncate/issues"
+  },
+  "homepage": "https://github.com/matt-d-rat/react-middle-truncate#readme",
   "scripts": {
     "build:demo": "cross-env webpack --config ./config/webpack.prod.config.js",
     "build:dll": "cross-env webpack --config ./config/webpack.dll.config.js",
