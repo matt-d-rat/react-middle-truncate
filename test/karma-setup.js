@@ -6,14 +6,9 @@ import sinonChai from 'sinon-chai';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
+import 'raf/polyfill'; // requestAnimationFrame Polyfill
+
 Enzyme.configure({ adapter: new Adapter() });
-
-// Using this published fork of enzyme and react 16 adapter to resolve https://github.com/airbnb/enzyme/pull/1513
-// while waiting for next release. Limited only to containers/app/app.spec.js which rely on React.context.
-import PisanoEnzyme from '@pisano/enzyme';
-import PisanoAdapter from '@pisano/enzyme-adapter-react-16';
-
-PisanoEnzyme.configure({ adapter: new PisanoAdapter() });
 
 sinonStubPromise(sinon);
 chai.use(chaiEnzyme());
@@ -23,9 +18,6 @@ global.chai = chai;
 global.sinon = sinon;
 global.expect = chai.expect;
 global.should = chai.should();
-
-// requestAnimationFrame Polyfill
-import 'raf/polyfill';
 
 // Find all tests that live in the packages folder and load them into the runner
 // (excluding those which may be present in the node_modules of a given package)

@@ -6,14 +6,9 @@ const sinonChai = require('sinon-chai');
 const Enzyme = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
 
+require('raf/polyfill'); // requestAnimationFrame Polyfill for React 16
+
 Enzyme.configure({ adapter: new Adapter() });
-
-// Using this published fork of enzyme and react 16 adapter to resolve https://github.com/airbnb/enzyme/pull/1513
-// while waiting for next release. Limited only to containers/app/app.spec.js which rely on React.context.
-const PisanoEnzyme = require('@pisano/enzyme');
-const PisanoAdapter = require('@pisano/enzyme-adapter-react-16');
-
-PisanoEnzyme.configure({ adapter: new PisanoAdapter() });
 
 sinonStubPromise(sinon);
 
@@ -33,6 +28,3 @@ window.HTMLCanvasElement.prototype.getContext = () => ({
 });
 
 window.getSelection = () => ({})
-
-// requestAnimationFrame Polyfill for React 16
-require('raf/polyfill');
