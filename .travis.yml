@@ -1,0 +1,10 @@
+language: node_js
+sudo: false
+node_js:
+  - 8.11.1
+before_script:
+- npm run check
+script: npm run test -- --interactive false
+cache:
+  directories:
+    - node_modules
