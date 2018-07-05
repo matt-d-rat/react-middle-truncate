@@ -1,6 +1,6 @@
 {
   "name": "react-middle-truncate",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "A React component for intelligently truncating text in the middle of the string.",
   "author": "Matt Fairbrass <matt@mattfairbrass.com>",
   "license": "MIT",
