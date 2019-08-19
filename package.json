@@ -94,7 +94,7 @@
     "lint-staged": "^7.1.3",
     "mocha": "^5.2.0",
     "mocha-webpack": "^2.0.0-beta.0",
-    "mongodb-js-precommit": "^1.0.1",
+    "mongodb-js-precommit": "^2.0.0",
     "node-sass": "^4.12.0",
     "nyc": "^12.0.2",
     "postcss-loader": "^2.1.5",
