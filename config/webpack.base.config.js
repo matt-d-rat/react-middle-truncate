@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const cssNano = require('cssnano');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const project = require('./project');
 
@@ -52,43 +52,46 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: [/node_modules/],
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: true,
-                importLoaders: 1,
-                modules: {
-                  localIdentName: (process.env.NODE_ENV === 'production')
-                    ? '[hash:base64:5]'
-                    : project.name + '_[name]_[local]---[hash:base64:5]'
-                }
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              ident: 'postcss',
-              options: {
-                sourceMap: true,
-                plugins: function() {
-                  return [
-                    cssNano(),
-                    autoprefixer('last 2 versions')
-                  ];
-                }
-              }
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true,
-                outputStyle: 'expanded'
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === 'development' // only enable hot in development
+            }
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              importLoaders: 1,
+              modules: {
+                localIdentName: (process.env.NODE_ENV === 'production')
+                  ? '[hash:base64:5]'
+                  : project.name + '_[name]_[local]---[hash:base64:5]'
               }
             }
-          ]
-        })
+          },
+          {
+            loader: 'postcss-loader',
+            ident: 'postcss',
+            options: {
+              sourceMap: true,
+              plugins: function() {
+                return [
+                  cssNano(),
+                  autoprefixer('last 2 versions')
+                ];
+              }
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              outputStyle: 'expanded'
+            }
+          }
+        ]
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
@@ -130,11 +133,10 @@ module.exports = {
     new webpack.DefinePlugin(GLOBALS),
 
     // Extracts the imported Sass dependencies into a single CSS file
-    new ExtractTextPlugin({
-      filename: 'assets/css/[name].css',
-      allChunks: true,
+    new MiniCssExtractPlugin({
       ignoreOrder: false,
-      disable: process.env.NODE_ENV !== 'production'
+      filename: process.env.NODE_ENV !== 'production' ? '[name].css' : '[name].[hash].css',
+      chunkFilename: process.env.NODE_ENV !== 'production' ? '[id].css' : '[id].[hash].css'
     })
   ]
 };
