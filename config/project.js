@@ -24,7 +24,6 @@ module.exports = {
   vendor: [
     'classnames',
     'lodash',
-    'measure-text',
     'react',
     'react-dom',
     'units-css'
