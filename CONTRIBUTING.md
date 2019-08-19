@@ -2,7 +2,50 @@
 
 Pull requests of any kind are welcome from the community, and if you're reading this I am really happy that you have decided to contribute. You rock! When contributing to this repository, please first discuss the change you wish to make via a GitHub issue with the owners of this repository before making a change.
 
-Please note we have a [Code of Conduct][url-code-of-conduct], please follow it in all your interactions with the project.
+Please note we have a [Code of Conduct][url-code-of-conduct], please follow it in all of your interactions with this project.
+
+## Development Setup
+
+**Installation:**
+
+1. Clone the project `git clone git@github.com:matt-d-rat/react-middle-truncate.git`
+2. Install npm dependencies `npm install`
+
+**Running the demo app:**
+
+```
+npm start
+```
+
+***Running Eslint***
+
+```
+npm run check
+```
+
+**Running the tests:**
+
+_Mocha_
+
+```
+npm run test
+```
+
+```
+npm run test:watch
+```
+
+_Karma (in-browser)_
+
+```
+npm run test:karma
+```
+
+_Test coverage_
+
+```
+npm run cover
+```
 
 ## Pull Request Process
 
