@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
+const cssNano = require('cssnano');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 const project = require('./project');
@@ -57,21 +58,23 @@ module.exports = {
             {
               loader: 'css-loader',
               options: {
-                minimize: process.env.NODE_ENV === 'production',
                 sourceMap: true,
-                modules: true,
                 importLoaders: 1,
-                localIdentName: (process.env.NODE_ENV === 'production')
-                  ? '[hash:base64:5]'
-                  : project.name + '_[name]_[local]---[hash:base64:5]'
+                modules: {
+                  localIdentName: (process.env.NODE_ENV === 'production')
+                    ? '[hash:base64:5]'
+                    : project.name + '_[name]_[local]---[hash:base64:5]'
+                }
               }
             },
             {
               loader: 'postcss-loader',
+              ident: 'postcss',
               options: {
                 sourceMap: true,
                 plugins: function() {
                   return [
+                    cssNano(),
                     autoprefixer('last 2 versions')
                   ];
                 }
@@ -80,6 +83,7 @@ module.exports = {
             {
               loader: 'sass-loader',
               options: {
+                sourceMap: true,
                 outputStyle: 'expanded'
               }
             }
