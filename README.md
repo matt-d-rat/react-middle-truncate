@@ -1,6 +1,6 @@
 # react-middle-truncate
 
-[![][travis_img]][travis_url] [![][github_issues_img]][github_issues_url] [![github_forks_img]][github_forks_url] [![github_stars_img]][github_stars_url] [![][license_img]][license_url] 
+[![][travis_img]][travis_url] [![][github_issues_img]][github_issues_url] [![github_forks_img]][github_forks_url] [![github_stars_img]][github_stars_url] [![][license_img]][license_url]
 
 A React component for intelligently truncating text in the middle of the string with an ellipsis. You can see the component in action in this [demo][url-demo].
 
@@ -12,7 +12,7 @@ npm install react-middle-truncate --save
 
 ## Usage
 
-The truncation point is determined by taking into account the inheritted `font` CSS properties of the element, and rendering the result to [Canvas][url-docs-canvas] in order to dynamically calculaute the width of the text. Should the width of the text not fit into the available space to render, truncation is applied. The result of which looks like this:
+The truncation point is determined by taking into account the inherited `font` CSS properties of the element, and rendering the result to [Canvas][url-docs-canvas] in order to dynamically calculate the width of the text. Should the width of the text not fit into the available space to render, truncation is applied. The result of which looks like this:
 
 ```javascript
 import MiddleTruncate from 'react-middle-truncate';
@@ -48,7 +48,7 @@ Ultimately it boils down to whether text at the end or in the middle of the stri
 
 In the case of a street address, the end of the string is likely to be less important in helping the user to differentiate items from one another, as most strings of that category are likely to end in road, street, avenue etc... So in that case truncating at the end of the string would be a better solution.
 
-In the case of a connection string or a URL, the start and/or end of the string is likely to contain more valueable information to help the user differentiate items from one another, such as the protocol and subdomain parts at the start, and the port number at the end of the string are more likely to be different. In that case truncatig in the middle of the string would be a better solution.
+In the case of a connection string or a URL, the start and/or end of the string is likely to contain more valuable information to help the user differentiate items from one another, such as the protocol and sub domain parts at the start, and the port number at the end of the string are more likely to be different. In that case truncating in the middle of the string would be a better solution.
 
 ## Contributing
 
