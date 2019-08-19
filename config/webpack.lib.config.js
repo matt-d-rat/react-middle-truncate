@@ -15,7 +15,10 @@ module.exports = {
   },
   resolve: {
     modules: ['node_modules'],
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      utils: path.join(project.path.src, 'utils')
+    }
   },
   entry: {
     'react-middle-truncate': path.resolve(project.path.src, 'react-middle-truncate/index.js')
