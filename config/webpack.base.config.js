@@ -30,8 +30,7 @@ module.exports = {
       fonts: path.join(project.path.src, 'demo/assets/fonts'),
       images: path.join(project.path.src, 'demo/assets/images'),
       lib: path.join(project.path.src, 'react-middle-truncate'),
-      scss: path.join(project.path.src, 'demo/assets/scss'),
-      utils: path.join(project.path.src, 'utils')
+      scss: path.join(project.path.src, 'demo/assets/scss')
     },
     extensions: ['.js', '.jsx', '.json', '.scss', '.css']
   },

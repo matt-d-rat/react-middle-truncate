@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { debounce, toFinite } from 'lodash';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
-import measureText from 'utils/measure-text';
+import measureText from './utils/measure-text';
 import units from 'units-css';
 
 const getStartOffset = (start, text) => {
