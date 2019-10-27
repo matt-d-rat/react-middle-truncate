@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { debounce, toFinite } from 'lodash';
+import { debounce, toFinite, isNumber } from 'lodash';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import measureText from './utils/measure-text';
@@ -53,7 +53,7 @@ class MiddleTruncate extends PureComponent {
     start: PropTypes.oneOfType([PropTypes.number, PropTypes.instanceOf(RegExp), PropTypes.string]),
     style: PropTypes.object,
     text: PropTypes.string
-  }
+  };
 
   static defaultProps = {
     className: '',
@@ -64,13 +64,23 @@ class MiddleTruncate extends PureComponent {
     start: 0,
     style: {},
     text: ''
+  };
+
+  constructor(props) {
+    super(props);
+
+    // Debounce the parsing of the text so that the component has had time to render its DOM for measurement calculations
+    this.parseTextForTruncation = debounce(this.parseTextForTruncation.bind(this), 0);
+
+    // Debounce the onResize handler
+    this.onResize = debounce(this.onResize.bind(this), props.onResizeDebounceMs);
   }
 
   state = {
     truncatedText: this.props.text,
     start: getStartOffset(this.props.start, this.props.text),
     end: getEndOffset(this.props.end, this.props.text)
-  }
+  };
 
   componentDidMount() {
     this.parseTextForTruncation(this.props.text);
@@ -92,6 +102,10 @@ class MiddleTruncate extends PureComponent {
   }
 
   componentWillUnmount() {
+    // Cancel any pending debounced functions
+    this.onResize.cancel();
+    this.parseTextForTruncation.cancel();
+
     window.removeEventListener('resize', this.onResize);
   }
 
@@ -115,9 +129,9 @@ class MiddleTruncate extends PureComponent {
     }
   }
 
-  onResize = debounce(() => {
+  onResize() {
     this.parseTextForTruncation(this.props.text);
-  }, this.props.onResizeDebounceMs)
+  }
 
   getTextMeasurement = ref => {
     const node = findDOMNode(ref);
@@ -147,8 +161,8 @@ class MiddleTruncate extends PureComponent {
     const { offsetWidth, offsetHeight } = node;
 
     return {
-      width: units.parse(offsetWidth, 'px'),
-      height: units.parse(offsetHeight, 'px')
+      width: isNumber(offsetWidth) ? units.parse(offsetWidth, 'px') : 0,
+      height: isNumber(offsetHeight) ? units.parse(offsetHeight, 'px') : 0
     };
   }
 
@@ -180,8 +194,7 @@ class MiddleTruncate extends PureComponent {
     return `${preserveLeftSide}${leftSide}${ellipsis}${rightSide}${preserveRightSide}`;
   }
 
-  // Debounce the parsing of the text so that the component has had time to render its DOM for measurement calculations
-  parseTextForTruncation = debounce(text => {
+  parseTextForTruncation(text) {
     const measurements = this.calculateMeasurements();
 
     const truncatedText =
@@ -190,7 +203,7 @@ class MiddleTruncate extends PureComponent {
         : text;
 
     this.setState(() => ({ truncatedText }));
-  }, 0)
+  }
 
   render() {
     // eslint-disable-next-line no-unused-vars

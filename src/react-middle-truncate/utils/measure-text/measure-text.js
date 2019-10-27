@@ -70,8 +70,8 @@ const measureHeight = (size, lineHeight) => {
 const measureText = ({
   text,
   fontFamily,
-  fontSize,
-  lineHeight,
+  fontSize = '',
+  lineHeight = 1,
   fontWeight = DEFAULT_FONT_WEIGHT,
   fontStyle = DEFAULT_FONT_STYLE,
   canvas = DEFAULT_CANVAS
@@ -84,8 +84,8 @@ const measureText = ({
       text: line,
       width: units.parse(`${ctx.measureText(line).width}px`),
       height: measureHeight(
-        units.parse(fontSize),
-        units.parse(lineHeight)
+        units.parse(fontSize, 'fontSize'),
+        units.parse(lineHeight, 'lineHeight')
       )
     };
   };
