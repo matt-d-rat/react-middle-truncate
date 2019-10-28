@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { debounce, toFinite, isNumber } from 'lodash';
+import { debounce, toFinite } from 'lodash';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import measureText from './utils/measure-text';
@@ -158,11 +158,13 @@ class MiddleTruncate extends PureComponent {
 
   getComponentMeasurement = () => {
     const node = findDOMNode(this.refs.component);
-    const { offsetWidth, offsetHeight } = node;
+
+    const offsetWidth = node && node.offsetWidth ? node.offsetWidth : 0;
+    const offsetHeight = node && node.offsetHeight ? node.offsetHeight : 0;
 
     return {
-      width: isNumber(offsetWidth) ? units.parse(offsetWidth, 'px') : 0,
-      height: isNumber(offsetHeight) ? units.parse(offsetHeight, 'px') : 0
+      width: units.parse(offsetWidth, 'px'),
+      height: units.parse(offsetHeight, 'px')
     };
   }
 
