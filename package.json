@@ -113,7 +113,7 @@
     "resolve-url-loader": "^2.3.0",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.3",
-    "sinon": "^5.1.1",
+    "sinon": "^9.0.0",
     "sinon-chai": "^3.1.0",
     "sinon-stub-promise": "^4.0.0",
     "style-loader": "^0.21.0",
