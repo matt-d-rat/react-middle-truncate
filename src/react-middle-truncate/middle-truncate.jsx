@@ -117,7 +117,7 @@ class MiddleTruncate extends PureComponent {
       return;
     }
 
-    const selectedText = window.getSelection().toString();
+    const selectedText = window.getSelection().toString().trim();
 
     // If smartCopy is set to partial or if smartCopy is set to all and the entire string was selected
     // copy the original full text to the user's clipboard
