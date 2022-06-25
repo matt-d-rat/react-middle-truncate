@@ -84,7 +84,7 @@
     "ignore-loader": "^0.1.2",
     "inject-loader": "^4.0.1",
     "istanbul-instrumenter-loader": "^3.0.1",
-    "jsdom": "^11.11.0",
+    "jsdom": "^16.5.0",
     "jsdom-global": "^3.0.2",
     "karma": "^4.2.0",
     "karma-chrome-launcher": "^2.2.0",
